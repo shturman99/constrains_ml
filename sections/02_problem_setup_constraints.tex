@@ -1,0 +1,15 @@
+\section{Problem setup and constraints}
+We target incompressible Navier--Stokes and incompressible MHD systems on periodic or wall-bounded domains:
+\begin{align}
+    \partial_t \uu + (\uu\cdot\grad)\uu + \grad p &= \nu \Delta \uu + \mathbf{f}, \\
+    \divergence \uu &= 0, \\
+    \partial_t \BB + (\uu\cdot\grad)\BB - (\BB\cdot\grad)\uu &= \eta \Delta \BB, \\
+    \divergence \BB &= 0.
+\end{align}
+Key constraints include incompressibility, solenoidal magnetic fields, boundary conditions, and preservation of invariants such as kinetic energy balance, total magnetic energy, and helicity in ideal limits. Constraint preservation is typically achieved via pressure or vector-potential Poisson solves, Helmholtz decompositions, or constrained transport.
+
+\paragraph{Objective.} Reduce the cost of constraint enforcement (pressure projection, divergence cleaning, or constrained-transport updates) while bounding violation norms and preserving stability.
+
+\paragraph{Baseline solvers.} We assume pseudo-spectral DNS for periodic domains and finite-volume/finite-difference schemes for wall-bounded flows, with classical pressure projection or generalized Lagrange multiplier methods \citep{chorin1968projection,temam1969approximation,brackbill1980fluid}. Magnetic divergence control may use constrained transport \citep{evans1988simulation} or hyperbolic/parabolic cleaning \citep{dedner2002hyperbolic}.
+
+\paragraph{Constraint metrics.} We will report $\|\divergence \uu\|_{L^2}$ and $\|\divergence \BB\|_{L^2}$ over time, relative energy drift, and boundary-condition satisfaction. Spectral diagnostics (energy spectra, helicity spectra) will assess physical fidelity.

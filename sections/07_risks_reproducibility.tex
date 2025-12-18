@@ -1,0 +1,17 @@
+\section{Risks and reproducibility}
+\subsection{Risks}
+\begin{itemize}
+    \item \textbf{Stability regressions:} ML surrogates may introduce phase errors that grow under explicit time stepping, requiring fallback projection or step-size control.
+    \item \textbf{Constraint drift:} Soft penalties might be insufficient; mitigation includes hard divergence-free parametrizations and post-step projections.
+    \item \textbf{Generalization gaps:} Models may overfit specific Reynolds numbers or boundary conditions. We plan parametric sampling and domain-randomization during training.
+    \item \textbf{Hardware coupling:} Speedups may depend on GPU availability; CPU-only paths must remain viable for baselines.
+\end{itemize}
+
+\subsection{Reproducibility checklist}
+\begin{itemize}
+    \item Version-control all configs and scripts; publish commit hashes.
+    \item Fix random seeds; document hardware (CPU/GPU model, interconnect) and software (compiler, CUDA, MPI).
+    \item Log training and evaluation via lightweight experiment tracker (e.g., CSV/JSON + TensorBoard); store wall-clock timings and constraint metrics.
+    \item Release datasets or generation scripts with parameter grids; include checksum verification.
+    \item Provide small regression tests (short trajectories) for CI to validate constraint norms and energy conservation within tolerances.
+\end{itemize}

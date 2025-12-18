@@ -1,0 +1,9 @@
+\section{Related work}
+\subsection{Seminal foundations}
+Projection methods \citep{chorin1968projection,temam1969approximation} and constrained transport for MHD \citep{brackbill1980fluid,evans1988simulation} established algorithmic baselines. Mimetic and mixed finite elements enforce constraints via compatible spaces \citep{arnold2006finite,elman2014finite}. Artificial compressibility and penalty techniques \citep{chorin1967theory,guermond2006overview} provide alternatives with tunable accuracy.
+
+\subsection{Modern constraint-aware ML}
+PINNs demonstrated residual-based learning for PDEs \citep{raissi2019physics}, with extensions to divergence-free fields using streamfunctions or Helmholtz layers \citep{li2022physics,patel2022physics}. Neural operators scale to high resolutions; divergence-free FNOs \citep{brandstetter2022guaranteed} and physics-regularized DeepONets \citep{wang2021learning,li2021fourier} improved stability. Learned solvers incorporate corrector stages \citep{um2020solver} or differentiable fluid layers \citep{holl2020learning}. Multigrid-inspired networks accelerate Poisson solves \citep{greenfeld2019learning,katrutsa2020deep,fan2023improved}.
+
+\subsection{Hybrid and application-focused studies}
+Hybrid projection-plus-ML approaches demonstrate speedups while maintaining divergence control in graphics and robotics \citep{ono2017jet,deng2019non}. In turbulence modeling, physics-based closures augmented with ML surrogates have shown improved accuracy \citep{mishra2022physics,babaee2021physics}, though explicit constraint handling remains an open challenge. Recent work in MHD introduces ML-guided divergence cleaning and CT surrogates \citep{asproulis2020machine,li2022physics}.

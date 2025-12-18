@@ -1,0 +1,16 @@
+\section{Experiments and metrics}
+\subsection{Test problems}
+Taylor--Green vortex (3D), decaying homogeneous isotropic turbulence, and Orszag--Tang vortex for MHD provide canonical constraints-focused tests. Boundary cases include lid-driven cavity and channel flow with no-slip walls.
+
+\subsection{Metrics}
+\begin{itemize}
+    \item Constraint violation norms: $\|\divergence\uu\|_{L^2}$, $\|\divergence\BB\|_{L^2}$ over time; maximum norm spikes.
+    \item Energy and helicity drift: relative error in kinetic/magnetic energy, total enstrophy; spectra vs. baseline at matched resolution.
+    \item Stability and CFL: maximum stable time step, blow-up rate, or nan occurrence frequency.
+    \item Runtime and scaling: wall-clock per step, strong/weak scaling on CPU/GPU; cost breakdown of projection/Poisson solves.
+    \item Generalization: performance across Reynolds numbers, forcing spectra, resolutions, and boundary conditions; out-of-distribution robustness.
+    \item Ablations: soft vs hard constraints, projection-after-ML vs projection-free, effect of loss weights and architectural choices.
+\end{itemize}
+
+\subsection{Evaluation protocol}
+All models will be compared against high-resolution DNS baselines downsampled to training resolution. Cross-validation over seeds and train/validation splits will be reported. Confidence intervals computed via bootstrapping on trajectory segments.

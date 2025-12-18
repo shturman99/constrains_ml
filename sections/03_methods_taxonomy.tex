@@ -1,0 +1,29 @@
+\section{Taxonomy of constraint-enforcing methods}
+\subsection{Classical numerical strategies}
+\begin{itemize}
+    \item \textbf{Projection and pressure-Poisson solves:} Split-step schemes enforce $\divergence\uu=0$ via Helmholtz decomposition \citep{chorin1968projection,temam1969approximation,kronbichler2020efficient}. Multigrid or FFT solvers dominate runtime in DNS.
+    \item \textbf{Lagrange multipliers and saddle-point formulations:} Treat pressure as a multiplier enforcing incompressibility within implicit solves or finite elements \citep{elman2014finite}.
+    \item \textbf{Penalty and artificial compressibility:} Introduce penalties or pseudo-time terms that relax constraints with controlled error \citep{chorin1967theory,guermond2006overview}.
+    \item \textbf{Constrained transport (CT):} Staggered updates preserve $\divergence\BB=0$ to machine precision \citep{evans1988simulation,teyssier2002cosmological}.
+    \item \textbf{Divergence cleaning:} Hyperbolic/parabolic cleaning advects and damps constraint errors \citep{dedner2002hyperbolic,balsara1999divergence}.
+    \item \textbf{Structure-preserving discretizations:} Mimetic and discrete exterior calculus schemes conserve invariants and constraints by construction \citep{arnold2006finite,hyman2002mimetic}.
+\end{itemize}
+
+\subsection{Machine learning strategies}
+\paragraph{Physics-informed neural networks (PINNs).} PINNs impose PDE residuals and divergence-free losses \citep{raissi2019physics,jiang2023physics}. Variants hard-code divergence-free fields via streamfunctions or vector potentials \citep{li2022physics,patel2022physics}.
+
+\paragraph{Neural operators.} Fourier Neural Operators (FNO) and DeepONets learn mappings between fields and can incorporate divergence-free parameterizations or Helmholtz projection layers \citep{li2021fourier,li2020neural,brandstetter2022guaranteed,kashefi2022physics}. Graph neural operators preserve local conservation via message-passing constraints \citep{sanchez2020learning,liu2022phygnn}.
+
+\paragraph{Differentiable solvers and learned correctors.} End-to-end differentiable CFD frameworks backpropagate through time-steppers; learned correctors adjust intermediate states to reduce constraint drift \citep{holl2020learning,um2020solver}. Learned multigrid and preconditioners accelerate Poisson solves while retaining exact projections \citep{greenfeld2019learning,katrutsa2020deep,fan2023improved}.
+
+\paragraph{Hybrid hard/soft constraints.} Architectures using vector potentials or divergence-free kernels provide hard satisfaction; soft penalties weight constraint losses. Hybrid pipelines may apply ML prediction followed by classical projection, trading speed for guaranteed feasibility \citep{ono2017jet,deng2019non,um2020solver}.
+
+\paragraph{Closure modeling vs constraint enforcement.} Turbulence closures (e.g., LES models) differ from strict constraint handling; we emphasize methods that explicitly target $\divergence$ control rather than subgrid stress modeling \citep{mishra2022physics,babaee2021physics}.
+
+\subsection{Figure placeholder}
+\begin{figure}[h]
+    \centering
+    \IfFileExists{fig/pipeline_placeholder}{\includegraphics[width=0.7\textwidth]{fig/pipeline_placeholder}}{\fbox{Placeholder figure to be saved as fig/pipeline\_placeholder.(pdf|png)}}
+    \caption{Pipeline concept: classical DNS time-stepper accelerated by ML surrogate for projection or corrector enforcing $\divergence$ constraints. Placeholder to be replaced with actual schematic.}
+    \label{fig:pipeline}
+\end{figure}

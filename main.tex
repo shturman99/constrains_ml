@@ -1,14 +1,31 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[numbers,sort&compress]{natbib}
+\input{macros}
 
-\title{constrains_ml}
-\author{Murman Gurgenidze}
-\date{December 2025}
+\title{Machine Learning for Constraint-Preserving Direct Numerical Simulation of Incompressible Flows and Magnetohydrodynamics}
+\author{Research Draft}
+\date{\today}
 
 \begin{document}
 
 \maketitle
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_problem_setup_constraints}
+\input{sections/03_methods_taxonomy}
+\input{sections/04_related_work}
+\input{sections/05_proposed_work_plan}
+\input{sections/06_experiments_metrics}
+\input{sections/07_risks_reproducibility}
+\input{sections/08_conclusion}
 
-\section{Introduction}
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
